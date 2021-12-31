@@ -3,6 +3,7 @@ class BooksController < ApplicationController
   def show
     @book = Book.find(params[:id])
     @user = @book.user
+    @book_comment = BookComment.new
   end
 
   def index
@@ -40,6 +41,18 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
     @book.destoy
     redirect_to books_path
+  end
+
+  def follow(user_id)
+  relationships.create(followed_id: user_id)
+  end
+# フォローを外すときの処理
+  def unfollow(user_id)
+  relationships.find_by(followed_id: user_id).destroy
+  end
+# フォローしているか判定
+  def following?(user)
+  followings.include?(user)
   end
 
   private

@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   def index
     @users = User.all
     @book = Book.new
-end
+  end
   def edit
     @user = User.find(params[:id])
   end
@@ -22,6 +22,8 @@ end
       render "show"
     end
   end
+  
+  
 
   private
   def user_params
