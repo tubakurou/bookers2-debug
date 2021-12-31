@@ -4,11 +4,15 @@
     <tr>
       <th>image</th>
       <th>name</th>
+      <th></th>
+      <th>
+        <%= link_to"フォロワー", user_followers_path(current_user) %>
+      </th>
       <th colspan="3"></th>
     </tr>
   </thead>
   <tbody>
-    
+
     <% users.each do |user| %>
       <tr>
         <td><%= attachment_image_tag(user, :profile_image, :fill, 50, 50, fallback: "no-image-icon.jpg") %></td>
