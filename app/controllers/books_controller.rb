@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-
+before_action :authenticate_user!, only: [:show, :create]
   def show
     @book = Book.find(params[:id])
     @user = @book.user
